@@ -5,7 +5,13 @@ export default function Pricing() {
       price: "$40",
       featured: true,
       tagline: "Handle complex automated workflows.",
-      features: ["Up to 5 active agents", "Premium AI models", "API & Webhook access", "Priority support"]
+      features: [
+        "Up to 5 active agents", 
+        "Premium AI models", 
+        "Connect Telegram, Discord & Slack(coming soon)", 
+        "Priority support",
+        "One click deployment"
+      ]
     },
     {
       name: "Enterprise",

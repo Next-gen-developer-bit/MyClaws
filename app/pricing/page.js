@@ -28,22 +28,18 @@ export default function PricingSelection() {
             </div>
             
             <div className={styles.specs}>
-              <div className={styles.specRow}>
-                <span className={styles.specLabel}>CPU</span>
-                <span className={styles.specValue}>4 vCPU</span>
-              </div>
-              <div className={styles.specRow}>
-                <span className={styles.specLabel}>RAM</span>
-                <span className={styles.specValue}>8 GB</span>
-              </div>
-              <div className={styles.specRow}>
-                <span className={styles.specLabel}>Storage</span>
-                <span className={styles.specValue}>80 GB SSD</span>
-              </div>
-              <div className={styles.specRow}>
-                <span className={styles.specLabel}>Agents</span>
-                <span className={styles.specValue}>Up to 5</span>
-              </div>
+              {[
+                "Up to 5 active agents",
+                "Premium AI models",
+                "Connect Telegram, Discord & Slack(coming soon)",
+                "Priority support",
+                "One click deployment"
+              ].map((feat, i) => (
+                <div key={i} className={styles.specRow} style={{ justifyContent: 'flex-start', borderBottom: 'none', padding: '8px 0' }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{marginRight: '12px', flexShrink: 0}}><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span className={styles.specLabel} style={{ color: 'var(--text-secondary)' }}>{feat}</span>
+                </div>
+              ))}
             </div>
             
             <Link href="/checkout?plan=pro" className={styles.cardBtnPrimary}>
