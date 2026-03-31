@@ -120,7 +120,7 @@ export async function POST(request) {
     // 3. Update status to provisioning
     await supabaseAdmin
       .from('claw_deployments')
-      .update({ status: 'provisioning' })
+      .update({ status: 'provisioning', updated_at: new Date().toISOString() })
       .eq('id', deploymentId);
 
     // 4. Create Vultr instance (Force 'bom' to ignore all legacy DigitalOcean region codes in DB)
@@ -142,6 +142,7 @@ export async function POST(request) {
         droplet_id: String(instance.id),
         region,
         status: 'provisioning',
+        updated_at: new Date().toISOString()
       })
       .eq('id', deploymentId);
 
@@ -159,6 +160,7 @@ export async function POST(request) {
             droplet_ip: ip,
             status: 'deploying',
             deployed_at: new Date().toISOString(),
+            updated_at: new Date().toISOString()
           })
           .eq('id', deploymentId);
       } catch (bgErr) {

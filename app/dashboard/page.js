@@ -100,13 +100,14 @@ export default function DashboardPage() {
   useEffect(() => {
     let timeout;
     if (pendingBots > 0) {
-      // Only poll deployments created within the last 10 minutes to avoid
-      // endless polling for old stuck deployments (saves Supabase credits).
-      const tenMinAgo = Date.now() - 10 * 60 * 1000;
-      const recentPending = deployments.find(d =>
-        (d.status === 'pending' || d.status === 'provisioning' || d.status === 'deploying') &&
-        new Date(d.created_at).getTime() > tenMinAgo
-      );
+      // Only poll deployments modified within the last 15 minutes to avoid
+      // endless polling for old stuck deployments. This ensures resumed bots poll correctly.
+      const fifteenMinAgo = Date.now() - 15 * 60 * 1000;
+      const recentPending = deployments.find(d => {
+        if (!['pending', 'provisioning', 'deploying'].includes(d.status)) return false;
+        const timestamp = new Date(d.updated_at || d.created_at).getTime();
+        return timestamp > fifteenMinAgo;
+      });
 
       if (recentPending && recentPending.id) {
         timeout = setTimeout(() => {
