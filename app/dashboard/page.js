@@ -132,6 +132,31 @@ export default function DashboardPage() {
     });
   };
 
+  const handleResume = async (id) => {
+    if (subscriptionStatus !== 'active') {
+      showToast('You need an active subscription to deploy or resume bots.', 'error');
+      return;
+    }
+    setToast({ message: 'Resuming bot...', type: 'success' });
+    try {
+      const res = await fetch('/api/provision-server', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ deploymentId: id })
+      });
+      const data = await res.json();
+      if (data.success) {
+        showToast('Bot is resuming...');
+        refreshDeployments();
+      } else {
+        showToast(data.error || 'Failed to resume bot.', 'error');
+      }
+    } catch (e) {
+      showToast('Failed to resume bot.', 'error');
+      console.error(e);
+    }
+  };
+
   const handleDelete = async (id) => {
     showConfirm('Are you sure you want to permanently delete this bot?', async () => {
       try {
@@ -472,10 +497,20 @@ export default function DashboardPage() {
                           className={styles.botActionBtn}
                           onClick={() => window.open(`/workspace?bot=${dep.id}`, '_blank')}
                         >Interact</button>
-                        <button 
-                          className={styles.botActionBtnDanger}
-                          onClick={() => handleStop(dep.id)}
-                        >Stop</button>
+                        
+                        {(dep.status === 'stopped' || dep.status === 'error') ? (
+                          <button 
+                            className={styles.botActionBtn}
+                            style={{ background: 'rgba(52, 211, 153, 0.1)', color: '#34d399', border: '1px solid rgba(52, 211, 153, 0.2)' }}
+                            onClick={() => handleResume(dep.id)}
+                          >Resume</button>
+                        ) : (
+                          <button 
+                            className={styles.botActionBtnDanger}
+                            onClick={() => handleStop(dep.id)}
+                          >Stop</button>
+                        )}
+                        
                         <button 
                           className={styles.botActionBtnDanger}
                           style={{ background: 'rgba(255, 59, 59, 0.1)', color: '#ff3b3b' }}
