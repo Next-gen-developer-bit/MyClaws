@@ -1,0 +1,524 @@
+.appContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #0f0f11;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+  color: #fff;
+  font-family: var(--font-inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  height: 60px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(15, 15, 17, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.navLeft {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brandIcon {
+  display: flex;
+  align-items: center;
+}
+
+.brandText {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.navTabs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 4px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.navTab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.navTab:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.activeTab {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.iconBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.iconBtn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+
+.userProfile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-left: 8px;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #ff4747;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.userEmail {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.mainContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Add a subtle red radial glow in the center */
+.mainContent::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 59, 59, 0.08) 0%, rgba(15, 15, 17, 0) 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+  text-align: center;
+}
+
+.botIconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #1c1c1e;
+  margin-bottom: 24px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05),
+              0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 32px;
+}
+
+.deployBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+}
+
+.deployBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 255, 255, 0.15);
+}
+
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(255, 59, 59, 0.1);
+  border: 1px solid rgba(255, 59, 59, 0.2);
+  color: #ff3b3b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: 8px;
+}
+
+.logoutBtn:hover {
+  background: rgba(255, 59, 59, 0.2);
+  transform: translateY(-1px);
+}
+
+/* Settings UI */
+.settingsWrapper {
+  width: 100%;
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  animation: fadeSlideIn 0.3s ease-out forwards;
+}
+
+.settingsTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.backBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(-2px);
+}
+
+.appContainer.light .backBtn {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #111;
+}
+
+.appContainer.light .backBtn:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.settingsTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.settingsCard {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.settingsHeader {
+  padding: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.settingsHeader svg {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.settingsHeader h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.settingsHeader p {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.settingsForm {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formGroup label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.formGroup input {
+  padding: 12px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.formGroup input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.formGroup input:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.buttonRow {
+  padding: 0 24px 24px 24px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.saveBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #10b981;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.saveBtn:hover {
+  background: #059669;
+  transform: translateY(-1px);
+}
+
+.dangerZone {
+  border-color: rgba(255, 59, 59, 0.2);
+  background: rgba(255, 59, 59, 0.02);
+}
+
+.dangerZone .settingsHeader {
+  border-bottom-color: rgba(255, 59, 59, 0.1);
+}
+
+.dangerZone .settingsHeader p {
+  color: rgba(255, 59, 59, 0.7);
+}
+.dangerZone .buttonRow {
+  padding-top: 24px;
+}
+
+.deleteBtn {
+  padding: 10px 20px;
+  background: #ff3b3b;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.deleteBtn:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+}
+
+/* Light Mode Overrides */
+.appContainer.light {
+  background-color: #fafafa;
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  color: #111;
+}
+
+.appContainer.light .navbar {
+  background: rgba(250, 250, 250, 0.85);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.appContainer.light .navTabs {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+.appContainer.light .navTab {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.appContainer.light .navTab:hover {
+  color: #111;
+}
+
+.appContainer.light .activeTab {
+  background: #fff;
+  color: #111;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.appContainer.light .iconBtn {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.appContainer.light .iconBtn:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: #111;
+}
+
+.appContainer.light .userEmail {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.appContainer.light .botIconWrapper {
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08),
+              0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.appContainer.light .botIconWrapper svg {
+  fill: #111;
+}
+
+.appContainer.light .title {
+  color: #111;
+}
+
+.appContainer.light .subtitle {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.appContainer.light .deployBtn {
+  background: #ff3b3b;
+  color: #fff;
+}
+
+.appContainer.light .settingsTitle {
+  color: #111;
+}
+
+.appContainer.light .settingsCard {
+  background: #fff;
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.appContainer.light .settingsHeader {
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+.appContainer.light .settingsHeader h3 {
+  color: #111;
+}
+
+.appContainer.light .settingsHeader p {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.appContainer.light .formGroup label {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.appContainer.light .formGroup input {
+  background: #fff;
+  border-color: rgba(0, 0, 0, 0.15);
+  color: #111;
+}
+
+.appContainer.light .formGroup input:disabled {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.appContainer.light .formGroup input:focus {
+  border-color: #111;
+  background: #fff;
+}
+
+.appContainer.light .dangerZone {
+  background: rgba(255, 59, 59, 0.02);
+  border-color: rgba(255, 59, 59, 0.2);
+}
